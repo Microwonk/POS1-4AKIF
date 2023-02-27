@@ -12,20 +12,20 @@ public class Main {
         final SchiffeVersenken schiffeVersenken = new SchiffeVersenken(10, 10);
         boolean success;
 
-        success = schiffeVersenken.setDestroyer(new int[][]{{1, 1},{2, 1},{3, 1}});
+        success = schiffeVersenken.setNewDestroyer(new int[][]{{1, 1},{2, 1},{3, 1}});
         System.out.println(success);
         System.out.println(schiffeVersenken.drawField());
 
-        success = schiffeVersenken.setFreightShip
-                (new int[][]{{1,1},{1,2},{1,3},{1,4}}); // wird nicht funktionieren, weil es Überlappt
+        success = schiffeVersenken.setNewFreightShip
+                (new int[][]{{1,1},{1,2},{1,3},{1,4}}); // wird nicht funktionieren, weil es Überlappt -> false
         System.out.println(success);
         System.out.println(schiffeVersenken.drawField());
 
-        success = schiffeVersenken.setFreightShip(new int[][]{{1,3},{1,4},{1,5},{1,6}});
+        success = schiffeVersenken.setNewFreightShip(new int[][]{{1,3},{1,4},{1,5},{1,6}});
         System.out.println(success);
         System.out.println(schiffeVersenken.drawField());
 
-        success = schiffeVersenken.setSmallShip(new int[][]{{5,6},{6,6}});
+        success = schiffeVersenken.setNewSmallShip(new int[][]{{5,6},{6,6}});
         System.out.println(success);
         System.out.println(schiffeVersenken.drawField());
     }
@@ -65,7 +65,7 @@ public class Main {
         }
 
 
-        public boolean setFreightShip(final int[][] locations) {
+        public boolean setNewFreightShip(final int[][] locations) {
             // wenn Schiffe überlappen, fails
             if (Arrays.stream(locations).anyMatch(ints -> this.FIELD[ints[0]][ints[1]] != WATER)) {
                 return false;
@@ -79,7 +79,7 @@ public class Main {
             return false;
         }
 
-        public boolean setDestroyer(final int[][] locations) {
+        public boolean setNewDestroyer(final int[][] locations) {
             // wenn Schiffe überlappen, fails
             if (Arrays.stream(locations).anyMatch(ints -> this.FIELD[ints[0]][ints[1]] != WATER)) {
                 return false;
@@ -93,7 +93,7 @@ public class Main {
             return false;
         }
 
-        public boolean setSmallShip(final int[][] locations) {
+        public boolean setNewSmallShip(final int[][] locations) {
             // wenn Schiffe überlappen, fails
             if (Arrays.stream(locations).anyMatch(ints -> this.FIELD[ints[0]][ints[1]] != WATER)) {
                 return false;
@@ -110,14 +110,16 @@ public class Main {
         // berechnet, wenn ein Schiff angereiht, gerade und auf dem Feld ist.
         private boolean isLocationsValid(final int[][] locations) {
             if (!isOnField(locations)) return false;
+
             int[] a = new int[locations.length];
             int[] b = new int[locations.length];
+
             for (int i = 0; i < locations.length; i++) {
                 a[i] = locations[i][0];
                 b[i] = locations[i][1];
             }
-            return Arrays.stream(a).allMatch(candidate -> candidate == a[0])
-                    || Arrays.stream(b).allMatch(candidate -> candidate == b[0])
+            return Arrays.stream(a).allMatch(ints -> ints == a[0])
+                    || Arrays.stream(b).allMatch(ints -> ints == b[0])
                     && isAdjacent(a) || isAdjacent(b);
         }
 
