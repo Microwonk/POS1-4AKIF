@@ -6,18 +6,16 @@ public class Main {
     }
 
     private static void test() {
-        MyListElement<Integer> customList = new MyListElement<>(1);
-        MyListElement<Integer> customEmptyList = new MyListElement<>();
+        MyListElement<Integer> customList = new MyListElement<>();
 
-        System.out.println(customList.size());
-        customList.add(4);
-        System.out.println(customList.size());
-        customList.add(5);
-        System.out.println(customList.size());
-        customList.add(6);
+        for (int i = 0; i < 100; i++) {
+            customList.add(i);
+        }
 
-        System.out.println(customList);
-        System.out.println(customList.get(2));
+        System.out.println(customList.get(3));
+        customList.set(3, 90);
+        System.out.println(customList.contains(5));
+        System.out.println(customList.getIndex(100));
         System.out.println(customList.size());
     }
 }
