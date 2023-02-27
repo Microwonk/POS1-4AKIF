@@ -34,42 +34,46 @@ public class MyListElement<E> {
         return this.size;
     }
 
-    // TODO: remove and set Method
-
-    public boolean remove(final int index) {
+    public E remove(final int index) {
+        E removedElement;
         if (index > size || index < 0) {
-            return false; // not in bounds
+            throw new RuntimeException("Index Out Of Bounds Exception");
         } else if (index == 0) {
+            removedElement = this.element;
+            this.element = next.element;
+            this.next = hasNext() ? next.next : null; // wenn kein nächstes vorhanden ist, wird das letzte gelöscht
 
-            return true;
-        } else if (index == 1) {
-            return true;
+            this.size--;
         } else {
-            return true;
+            removedElement = next.remove(index - 1);
+
+            this.size--;
         }
+        return removedElement;
     }
 
-    public boolean set(final int index, final E element) {
+    public E set(final int index, final E element) {
+        E oldElement;
         if (index > size || index < 0) {
-            return false; // not in bounds
+            throw new RuntimeException("Index Out Of Bounds Exception");
         } else if (index == 0) {
+            oldElement = this.element;
             this.element = element;
-            return true;
-        } else if (index == 1) {
+        } else if (index == 1 && hasNext()) {
+            oldElement = this.next.element;
             this.next.element = element;
-            return true;
         } else {
-            next.set(index-1, element);
-            return true;
+            oldElement = next.set(index - 1, element);
         }
+        return oldElement;
     }
 
     public E get(final int index) {
-        if (index > size) {
+        if (index > size || index < 0) {
             throw new RuntimeException("Index Out Of Bounds Exception");
         } else if (index == 0) {
             return this.element;
-        } else if (index == 1) {
+        } else if (index == 1 && hasNext()) {
             return this.next.element;
         }
         return next.get(index - 1);
@@ -85,7 +89,7 @@ public class MyListElement<E> {
         } else if (this.hasNext() && this.next.element != element) {
             return index + next.getIndex(element);
         } else {
-            return Integer.MIN_VALUE; // if the Element is not contained in it -> should be made better
+            return Integer.MIN_VALUE; // if the Element is not contained in it -> should be made better ?
         }
     }
 
@@ -103,6 +107,30 @@ public class MyListElement<E> {
 
     public boolean hasNext() {
         return this.next != null;
+    }
+
+    public void clear() {
+        this.element = null;
+        this.size = 0;
+        if (hasNext()) {
+            this.next = null;
+        }
+    }
+
+    public boolean addAll(final MyListElement<E> listElement) {
+        if (listElement.size() == 0) {
+            return false;
+        }
+        if (this.element == null) {
+            this.element = listElement.element;
+            this.next = listElement.next;
+        } else if (hasNext()) {
+            this.next.addAll(listElement);
+        } else {
+            this.next = listElement;
+        }
+        this.size += listElement.size();
+        return true;
     }
 
     @Override

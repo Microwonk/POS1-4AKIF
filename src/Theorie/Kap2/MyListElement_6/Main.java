@@ -5,17 +5,24 @@ public class Main {
         test();
     }
 
+    // TODO: write actual sophisticated tests
     private static void test() {
+        MyListElement<Integer> recursiveList = new MyListElement<>();
         MyListElement<Integer> customList = new MyListElement<>();
 
         for (int i = 0; i < 100; i++) {
-            customList.add(i);
+            recursiveList.add(i);
         }
 
-        System.out.println(customList.get(3));
-        customList.set(3, 90);
-        System.out.println(customList.contains(5));
-        System.out.println(customList.getIndex(100));
-        System.out.println(customList.size());
+        for (int i = 0; i < 40; i++) {
+            customList.add(i);
+        }
+        
+        System.out.println(recursiveList.set(73, 79));
+        System.out.println(recursiveList.get(73));
+        System.out.println(recursiveList.remove(88));
+        System.out.println(recursiveList.addAll(customList));
+        System.out.println();
+        System.out.println(recursiveList);
     }
 }
