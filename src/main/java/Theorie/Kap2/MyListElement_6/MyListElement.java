@@ -36,17 +36,15 @@ public class MyListElement<E> {
 
     public E remove(final int index) {
         E removedElement;
-        if (index > size || index < 0) {
+        if (index >= size || index < 0) {
             throw new RuntimeException("Index Out Of Bounds Exception");
         } else if (index == 0) {
             removedElement = this.element;
             this.element = next.element;
             this.next = hasNext() ? next.next : null; // wenn kein nächstes vorhanden ist, wird das letzte gelöscht
-
             this.size--;
         } else {
             removedElement = next.remove(index - 1);
-
             this.size--;
         }
         return removedElement;
@@ -54,7 +52,7 @@ public class MyListElement<E> {
 
     public E set(final int index, final E element) {
         E oldElement;
-        if (index > size || index < 0) {
+        if (index >= size || index < 0) {
             throw new RuntimeException("Index Out Of Bounds Exception");
         } else if (index == 0) {
             oldElement = this.element;
@@ -69,7 +67,7 @@ public class MyListElement<E> {
     }
 
     public E get(final int index) {
-        if (index > size || index < 0) {
+        if (index >= size || index < 0) {
             throw new RuntimeException("Index Out Of Bounds Exception");
         } else if (index == 0) {
             return this.element;
@@ -117,8 +115,18 @@ public class MyListElement<E> {
         }
     }
 
+    public boolean addAll(final java.util.Collection<E> c) {
+        if (c == null) {
+            return false;
+        }
+        // casts the Collection to custom type
+        final MyListElement<E> listElement = c.stream()
+                .collect(MyListElement::new, MyListElement::add, MyListElement::addAll);
+        return addAll(listElement);
+    }
+
     public boolean addAll(final MyListElement<E> listElement) {
-        if (listElement.size() == 0) {
+        if (listElement == null) {
             return false;
         }
         if (this.element == null) {
@@ -137,5 +145,13 @@ public class MyListElement<E> {
     public String toString() {
         return  element.toString().concat("\n") +
                 (next == null ? "" : next.toString());
+    }
+
+    public E getElement() {
+        return element;
+    }
+
+    public MyListElement<E> getNext() {
+        return next;
     }
 }
