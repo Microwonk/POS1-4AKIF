@@ -141,12 +141,25 @@ public class MyListElement<E> {
         return true;
     }
 
+    // iterativ
     @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        MyListElement<E> current = this;
+        sb.append(current.element.toString()).append('\n');
+        do {
+            current = current.next;
+            sb.append(current.element.toString()).append('\n');
+        } while (current.hasNext());
+        return  sb.toString();
+    }
+
+    // recursive
+  /*  @Override
     public String toString() {
         return  element.toString().concat("\n") +
                 (next == null ? "" : next.toString());
-    }
-
+    }*/
     public E getElement() {
         return element;
     }
