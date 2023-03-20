@@ -1,4 +1,4 @@
-package Tüfteln.Functions;
+package Tuefteln.Functions;
 
 import java.util.function.Function;
 
