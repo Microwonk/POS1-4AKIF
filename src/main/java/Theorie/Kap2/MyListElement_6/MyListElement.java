@@ -19,7 +19,7 @@ public class MyListElement<E> {
         this.size = 0;
     }
 
-    public void add(E newElement) {
+    public void add(final E newElement) {
         if (this.element == null) {
             this.element = newElement;
         } else if (!hasNext()) {
@@ -144,7 +144,7 @@ public class MyListElement<E> {
     // iterativ
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
+        final StringBuilder sb = new StringBuilder();
         MyListElement<E> current = this;
         sb.append(current.element.toString()).append('\n');
         do {
@@ -154,7 +154,7 @@ public class MyListElement<E> {
         return  sb.toString();
     }
 
-    // recursive
+    // rekursiv
   /*  @Override
     public String toString() {
         return  element.toString().concat("\n") +

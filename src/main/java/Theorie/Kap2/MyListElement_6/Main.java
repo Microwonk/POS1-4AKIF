@@ -23,8 +23,8 @@ public class Main {
         }
 
         System.out.println(recursiveList);
-
-        /*System.out.println(recursiveList.set(73, 79));
+        /*
+        System.out.println(recursiveList.set(73, 79));
         System.out.println(recursiveList.get(73));
         System.out.println(recursiveList.remove(88));
         System.out.println(recursiveList.addAll(customList));
@@ -33,6 +33,7 @@ public class Main {
         System.out.println();
         System.out.println(customList);
         customList.addAll(list);
-        System.out.println(customList);*/
+        System.out.println(customList);
+        */
     }
 }

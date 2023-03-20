@@ -1,0 +1,61 @@
+// alles im tausender durchschnitt
+
+auf 0 {
+    Number of Elements: 1.000
+    MyListElement: 182 nanoseconds
+    ArrayList: 257 nanoseconds
+    LinkedList: 295 nanoseconds
+    Array: 52 nanoseconds
+
+    Number of Elements: 10.000
+    MyListElement: 290 nanoseconds
+    ArrayList: 772 nanoseconds
+    LinkedList: 403 nanoseconds
+    Array: 80 nanoseconds
+
+    Number of Elements: 100.000
+    MyListElement: 110 nanoseconds
+    ArrayList: 113 nanoseconds
+    LinkedList: 136 nanoseconds
+    Array: 2 nanoseconds
+}
+
+auf mitte {
+    Number of Elements: 1.000
+    MyListElement: 3401 nanoseconds
+    ArrayList: 264 nanoseconds
+    LinkedList: 3010 nanoseconds
+    Array: 54 nanoseconds
+
+    Number of Elements: 10.000
+    MyListElement: 19650 nanoseconds
+    ArrayList: 287 nanoseconds
+    LinkedList: 14717 nanoseconds
+    Array: 45 nanoseconds
+
+    Number of Elements: 100.000
+    MyListElement: 486785 nanoseconds
+    ArrayList: 107 nanoseconds
+    LinkedList: 171549 nanoseconds
+    Array: 2 nanoseconds
+}
+
+auf ende {
+    Number of Elements: 1.000
+    MyListElement: 4987 nanoseconds
+    ArrayList: 269 nanoseconds
+    LinkedList: 254 nanoseconds
+    Array: 42 nanoseconds
+
+    Number of Elements: 10.000
+    MyListElement: 35794 nanoseconds
+    ArrayList: 265 nanoseconds
+    LinkedList: 249 nanoseconds
+    Array: 42 nanoseconds
+
+    Number of Elements: 100.000
+    MyListElement: 1259573 nanoseconds
+    ArrayList: 122 nanoseconds
+    LinkedList: 129 nanoseconds
+    Array: 2 nanoseconds
+}
