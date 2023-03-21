@@ -182,8 +182,8 @@ public final class Function implements Constants{
                             case LOG -> value = StrictMath.log10(eval(new_f_x, xi));
                             case SQRT -> value = StrictMath.sqrt(eval(new_f_x, xi));
                             case CBRT -> value = StrictMath.cbrt(eval(new_f_x, xi));
-                            case ROOT -> value = nthRoot(eval(new_f_x.split(",")[0],xi)
-                                    , (int) eval(new_f_x.split(",")[1],xi));
+                            case ROOT -> value = nthRoot(eval(new_f_x.split(",")[0].trim(),xi)
+                                    , (int) eval(new_f_x.split(",")[1].trim(),xi));
                             default -> throw new CalculatorException("The function is not well-formed");
                         }
                         hasFunction = false;
