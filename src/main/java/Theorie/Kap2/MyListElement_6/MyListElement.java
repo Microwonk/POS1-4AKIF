@@ -69,12 +69,8 @@ public class MyListElement<E> {
     public E get(final int index) {
         if (index >= size || index < 0) {
             throw new RuntimeException("Index Out Of Bounds Exception");
-        } else if (index == 0) {
-            return this.element;
-        } else if (index == 1 && hasNext()) {
-            return this.next.element;
         }
-        return next.get(index - 1);
+        return index == 0 ? this.element : next.get(index - 1);
     }
 
     // get a specific Element from the list using an Element that contains
