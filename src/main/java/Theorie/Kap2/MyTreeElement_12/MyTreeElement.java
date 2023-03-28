@@ -12,19 +12,26 @@ public class MyTreeElement {
 
     public void add(final Character c) {
         if (c <= value) {
-            if (leftNode == null) leftNode = new MyTreeElement(c);
-            else leftNode.add(c);
+            if (leftNode == null)
+                leftNode = new MyTreeElement(c);
+            else
+                leftNode.add(c);
         } else {
-            if (rightNode == null) rightNode = new MyTreeElement(c);
-            else rightNode.add(c);
+            if (rightNode == null)
+                rightNode = new MyTreeElement(c);
+            else
+                rightNode.add(c);
         }
     }
 
     public int count(final Character c) {
-        if (c == this.value) return 1;
-        else if (c < value && leftNode != null) return 1 + leftNode.count(c);
-        else if (c > value && rightNode != null) return 1 + rightNode.count(c);
-        else return -1;
-
+        if (c == this.value)
+            return 0;
+        else if (c <= value && leftNode != null)
+            return 1 + leftNode.count(c);
+        else if (c > value && rightNode != null)
+            return 1 + rightNode.count(c);
+        else
+            throw new ArrayIndexOutOfBoundsException("Nicht drin");
     }
 }
