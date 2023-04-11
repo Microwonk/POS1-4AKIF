@@ -31,17 +31,16 @@ public class RandomArray {
     }
 
     private static int[][] randArray () {
-        Random r = new Random();
+        final Random r = new Random();
         final int[][] res = new int[10][10];
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                int rand = r.ints(1, 101)
+                res[i][j] = r.ints(1, 1001)
                         .filter(n -> Arrays.stream(res)
                                 .flatMapToInt(Arrays::stream)
                                 .noneMatch(equalsTo(n)))
                         .findFirst()
                         .orElseThrow();
-                res[i][j] = rand;
             }
         }
         return res;

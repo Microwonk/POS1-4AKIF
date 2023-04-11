@@ -32,7 +32,7 @@ public class DeletablePrimes {
                 if (current.length() == 1) {
                     ways++;
                 } else {
-                    String temp = new StringBuilder(current).deleteCharAt(i).toString();
+                    final String temp = new StringBuilder(current).deleteCharAt(i).toString();
                     if (new BigInteger(temp).isProbablePrime(1)) {
                         stack.push(temp);
                     }

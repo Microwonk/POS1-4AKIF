@@ -32,6 +32,6 @@ public class MyTreeElement {
         else if (c > value && rightNode != null)
             return 1 + rightNode.count(c);
         else
-            throw new ArrayIndexOutOfBoundsException("Nicht drin");
+            throw new RuntimeException("Nicht drin :(");
     }
 }
