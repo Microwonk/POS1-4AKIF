@@ -1,7 +1,5 @@
 package Theorie.Kap3.Katzenwahnsinn_2;
 
-import Theorie.Kap3.Katzenwahnsinn_2.ObjectSize.ObjectSizeFetcher;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,10 +9,6 @@ public class Katzenwahnsinn {
     private final static String KATZE = "Katze ";
 
     public static void main(String[] args) {
-        System.out.println(ObjectSizeFetcher.getObjectSize(new Katze("Katze " + 1)));
-        //start();
-        //startListe();
-
     }
 
     private static void start () {
