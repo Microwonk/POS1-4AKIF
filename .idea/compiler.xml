@@ -9,8 +9,5 @@
         <module name="POS1-4AKIF" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="POS1-4AKIF" target="19" />
-    </bytecodeTargetLevel>
   </component>
 </project>
