@@ -6,10 +6,6 @@ public class Main {
 
     private final static MedienDB medien = new MedienDB();
 
-    public static void main (String[] args) {
-        start();
-    }
-
     private static void start () {
         Scanner scanner = new Scanner(System.in);
         String suche = null;
@@ -83,6 +79,9 @@ public class Main {
         } catch (Exception e) {
             System.out.println("Falsche Eingabe");
         }
+    }
 
+    public static void main (String[] args) {
+        start();
     }
 }

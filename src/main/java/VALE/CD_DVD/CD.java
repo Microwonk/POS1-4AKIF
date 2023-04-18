@@ -35,12 +35,12 @@ public class CD extends Medium {
 
     @Override
     public String toRawString () {
-        return "CD" +
-                kuenstler +
-                typ +
-                titel +
-                genre +
-                dauer +
+        return "CD" + " " +
+                kuenstler + " " +
+                typ + " " +
+                titel + " " +
+                genre + " " +
+                dauer + " " +
                 verliehen;
     }
 }

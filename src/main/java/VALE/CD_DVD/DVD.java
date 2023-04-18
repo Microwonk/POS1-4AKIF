@@ -35,12 +35,12 @@ public class DVD extends Medium {
 
     @Override
     public String toRawString () {
-        return "DVD" +
-                regisseur +
-                typ +
-                titel +
-                genre +
-                dauer +
+        return "DVD" + " " +
+                regisseur + " " +
+                typ + " " +
+                titel + " " +
+                genre + " " +
+                dauer + " " +
                 verliehen;
     }
 }
