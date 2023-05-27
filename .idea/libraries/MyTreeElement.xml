@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="MyTreeElement">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/java/Theorie/Kap5/BinarySearch_5/MyTreeElement.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

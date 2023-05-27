@@ -1,22 +1,22 @@
-#include <io.h>
+#include <stdio.h>
 
-struct Koordinate
-{
+typedef struct {
     int x;
     int y;
-} koordinate;
+} Koordinate;
 
-void set(int* kx, int* ky, int x, int y) {
-    kx = x;
-    ky = y;
+void set(Koordinate* k, int x, int y) {
+    k->x = x;
+    k->y = y;
 }
 
+void ausgeben(Koordinate k) {
+    printf("(x=%d, y=%d)\n", k.x, k.y);
+}
 
 int main() {
-
-    koordinate.x = 12;
-    koordinate.y = 17;
-
-
+    Koordinate k = {0, 0};
+    set(&k, 5, 10);
+    ausgeben(k);
     return 0;
 }

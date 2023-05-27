@@ -3,77 +3,54 @@ package Theorie.EpicCodingChallenges.MatchMakingL2;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.*;
+import java.util.stream.Stream;
 
 public class Main {
 
-    private static ArrayList<Match> matches = new ArrayList <>();
-    private static int[] wins;
+    private static final List <Match> matches = new ArrayList <>();
 
     public static void main (String[] args) {
-        start();
-    }
-
-    private static void start () {
+        // auswahl des files
         System.out.println("file name: ");
         try {
             load(new Scanner(System.in).nextLine());
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // matches.forEach(System.out::println);
 
-        matches.forEach(e -> {
-            if (e.scP1 > e.scP2) {
-                wins[e.p1] += 1;
-            } else {
-                wins[e.p2] += 1;
-            }
-        });
+        // Map aller Spieler IDs, dazugehörig die Wins mit Integer::sum und map.merge
+        Map <Integer, Integer> wins = matches.stream()
+                .collect(HashMap::new,
+                        (map, match) -> map.merge(match.scP1 > match.scP2 ? match.p1 : match.p2, 1, Integer::sum),
+                        HashMap::putAll);
 
-        for (int i = 0; i < wins.length; i++) {
-            System.out.println(i + " " + wins[i]);
-        }
+        sortWins(wins).forEach(entry -> System.out.println(entry.getKey() + " " + entry.getValue()));
     }
 
-    private static void load(String file) throws Exception {
+    private static void load (String file) throws Exception {
         BufferedReader br = new BufferedReader
                 (new FileReader
                         ("src/main/java/Theorie/EpicCodingChallenges/MatchMakingL2/test/level2_" + file + ".in"));
         String curr = br.readLine();
-        wins = new int[Integer.parseInt(curr.split(" ")[1])];
         while (true) {
             curr = br.readLine();
             if (curr == null) return;
             String[] temp = curr.split(" ");
-            matches.add(new Match(Integer.parseInt(temp[0])
+            matches.add(new Match(
+                      Integer.parseInt(temp[0])
                     , Integer.parseInt(temp[1])
                     , Integer.parseInt(temp[2])
-                    , Integer.parseInt(temp[3])));
+                    , Integer.parseInt(temp[3])
+                    )
+            );
         }
     }
 
+    // mapped alle wins in reverse order
+    private static Stream <Map.Entry <Integer, Integer> > sortWins (Map <Integer, Integer> wins) {
+        return wins.entrySet().stream().sorted(Map.Entry.<Integer, Integer>comparingByValue().reversed());
+    }
 
-    private static class Match {
-        int p1;
-        int scP1;
-        int p2;
-        int scP2;
-
-        public Match (int p1, int scP1, int p2, int scP2) {
-            this.p1 = p1;
-            this.scP1 = scP1;
-            this.p2 = p2;
-            this.scP2 = scP2;
-        }
-
-        @Override
-        public String toString () {
-            return "Match{" +
-                    "plID1=" + p1 +
-                    ", scorePl1=" + scP1 +
-                    ", plID2=" + p2 +
-                    ", scorePl2=" + scP2 +
-                    '}';
-        }
+    private record Match(int p1, int scP1, int p2, int scP2) {
     }
 }
