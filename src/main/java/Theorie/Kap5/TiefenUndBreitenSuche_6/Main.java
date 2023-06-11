@@ -4,8 +4,13 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+<<<<<<< Updated upstream
         MyNode<Integer> rootNode = new MyNode<>(0);
         MyNode<Integer> node1 = new MyNode<>(1);
+=======
+        MyNode <Integer> rootNode = new MyNode<>(0);
+        MyNode <Integer> node1 = new MyNode<>(1);
+>>>>>>> Stashed changes
         MyNode<Integer> node2 = new MyNode<>(2);
         MyNode<Integer> node3 = new MyNode<>(3);
         MyNode<Integer> node4 = new MyNode<>(4);

@@ -51,6 +51,5 @@ public class Main {
         return wins.entrySet().stream().sorted(Map.Entry.<Integer, Integer>comparingByValue().reversed());
     }
 
-    private record Match(int p1, int scP1, int p2, int scP2) {
-    }
+    private record Match(int p1, int scP1, int p2, int scP2) {}
 }
