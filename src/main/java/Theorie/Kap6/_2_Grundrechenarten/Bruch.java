@@ -1,5 +1,7 @@
 package Theorie.Kap6._2_Grundrechenarten;
 
+import java.util.Arrays;
+
 public class Bruch implements Grundrechenarten {
 
     public static final Bruch HALF = new Bruch(1, 2);

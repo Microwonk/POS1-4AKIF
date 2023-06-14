@@ -62,7 +62,7 @@ public class MyListElement<E> implements MyList<E>{
             newElement.next = this;
             this.element = value;
             this.next = newElement;
-            size++;
+            this.size++;
         } else if (index == size) {
             MyListElement<E> newElement = new MyListElement<>(value);
             MyListElement<E> current = this;
@@ -70,7 +70,7 @@ public class MyListElement<E> implements MyList<E>{
                 current = current.next;
             }
             current.next = newElement;
-            size++;
+            this.size++;
         } else {
             next.add(value, index - 1);
         }
